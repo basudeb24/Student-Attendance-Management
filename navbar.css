@@ -1,0 +1,58 @@
+body {
+    background-color: #76ead7;
+  }
+  
+  .navbar-brand {
+    color:#76ead7;
+  }
+  
+  .menubar ul li {
+    display: flex;
+    justify-content: center;
+    padding-right: 1.5em;
+  }
+  .menubar ul li a .thumb {
+    position: relative;
+    padding-bottom: 0.5em;
+    display: block;
+    line-height: 15px;
+    font-size: 2em;
+    text-align: center;
+    transition: 0.5s;
+    opacity: 0;
+  }
+  
+  .menubar ul li:hover a .thumb {
+    color: #76ead7;
+    transform: translateY(5px);
+    opacity: 1;
+  }
+  
+  .menubar ul li.active a .thumb {
+    color: #76ead7;
+    transform: translateY(5px);
+    opacity: 1;
+  }
+  
+  .menubar ul li a .menuteks {
+    position: absolute;
+    font-weight: 500;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  
+  .menubar ul li:hover a .menuteks {
+    opacity: 0;
+    color: #76ead7;
+    transform: translateY(20px);
+  }
+  
+  .menubar ul li.active a .menuteks {
+    opacity: 0;
+    color: #76ead7;
+    transform: translateY(20px);
+  }
+  

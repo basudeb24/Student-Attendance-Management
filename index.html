@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Questrial">
+    <link rel="stylesheet" type="text/css" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
+</head>
+
+<style>
+ #mainNav {
+  min-height: 70px;
+  background-color: #fff;
+}
+
+#mainNav .navbar-toggler {
+  font-size: 80%;
+  padding: 0.75rem;
+  color: #781c2e;
+  border: 1px solid #781c2e;
+}
+
+#mainNav .navbar-toggler:focus {
+  outline: none;
+}
+
+#mainNav .navbar-brand {
+  color: #161616;
+  font-weight: 700;
+  padding: .9rem 0;
+}
+
+#mainNav .navbar-nav .nav-item:hover {
+  color: fade(white, 80%);
+  outline: none;
+  background-color: transparent;
+}
+
+#mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+/* Navbar Bug Fix: https://stackoverflow.com/questions/25878450/bootstrap-collapsed-navbar-buggy-open */
+.navbar-collapse.collapse.in {
+  display: block!important;
+}
+
+@media (min-width: 992px) {
+  #mainNav {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    background-color: transparent;
+    -webkit-transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+  }
+  #mainNav .navbar-brand {
+    padding: .5rem 0;
+    color: rgba(53, 27, 225, 0.894);
+  }
+  #mainNav .nav-link {
+    -webkit-transition: none;
+    transition: none;
+    padding: 2rem 1rem;
+    color: rgba(24, 23, 24, 0.885);
+  }
+  #mainNav .nav-link:hover {
+    color: rgba(255, 255, 255, 0.75);
+  }
+  #mainNav .nav-link:active {
+    color: rgb(245, 236, 236);
+  }
+  #mainNav.navbar-shrink {
+    background-color: #fff;
+  }
+  #mainNav.navbar-shrink .navbar-brand {
+    color: #161616;
+  }
+  #mainNav.navbar-shrink .nav-link {
+    color: #161616;
+    padding: 1.5rem 1.5rem 1.25rem;
+    border-bottom: 0.25rem solid transparent;
+  }
+  #mainNav.navbar-shrink .nav-link:hover {
+    color: #781c2e;
+  }
+  #mainNav.navbar-shrink .nav-link:active {
+    color: #3d151a;
+  }
+  #mainNav.navbar-shrink .nav-link.active {
+    color: #781c2e;
+    outline: none;
+    border-bottom: 0.25rem solid #781c2e;
+  }
+}
+
+.masthead {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35rem ;
+  padding: 15rem 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(15%, rgba(22, 22, 22, 0.5)), to(#161616)), url("https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1186&q=80");
+  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 10%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("img/592c0314e13fdcoverpic.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.masthead h1 {
+  font-family: 'Varela Round';
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.5rem;
+  background: -webkit-linear-gradient(rgba(231, 213, 213, 0.327), rgba(245, 240, 240, 0.894));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.masthead h2 {
+  max-width: 20rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .masthead h1 {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .masthead {
+    height: 100vh;
+    padding: 0;
+  }
+  .masthead h1 {
+    font-size: 6.5rem;
+    line-height: 6.5rem;
+    letter-spacing: 0.8rem;
+  }
+  .masthead h2 {
+    max-width: 30rem;
+    font-size: 1.25rem;
+  }
+}
+
+.btn {
+  -webkit-box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+  padding: 1.25rem 2rem;
+  font-family: 'Varela Round';
+  font-size: 80%;
+  text-transform: uppercase;
+  letter-spacing: .15rem;
+  border: 0;
+}
+
+.btn-primary {
+  background-color: #781c2e;
+}
+
+.btn-primary:hover {
+  background-color: #601625;
+}
+
+.btn-primary:focus {
+  background-color: #601625;
+  color: white;
+}
+
+.btn-primary:active {
+  background-color: #3d151a !important;
+}
+
+.about-section {
+  padding-top: 5rem;
+  background: -webkit-gradient(linear, left top, left bottom, from(#161616), color-stop(75%, rgba(22, 22, 22, 0.9)), to(rgba(22, 22, 22, 0.8)));
+  background: linear-gradient(to bottom, #161616 0%, rgba(22, 22, 22, 0.9) 75%, rgba(22, 22, 22, 0.8) 100%);
+}
+
+.about-section p {
+  margin-bottom: 5rem;
+}
+
+.projects-section {
+  padding: 10rem 0;
+}
+
+.projects-section .featured-text {
+  padding: 2rem;
+}
+
+@media (min-width: 992px) {
+  .projects-section .featured-text {
+    padding: 0 0 0 2rem;
+    border-left: 0.5rem solid #781c2e;
+  }
+}
+
+.projects-section .project-text {
+  padding: 3rem;
+  font-size: 90%;
+}
+
+@media (min-width: 992px) {
+  .projects-section .project-text {
+    padding: 5rem;
+  }
+  .projects-section .project-text hr {
+    border-color: #781c2e;
+    border-width: .25rem;
+    width: 30%;
+  }
+}
+
+.signup-section {
+  padding: 10rem 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616)), url("../img/bg-signup.jpg");
+  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("https://lh3.googleusercontent.com/p/AF1QipOGc4qLIOK2fb4jlU_VV7Ovd7Qu7jLjptFHCJWP=w1080-h608-p-no-v0");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.signup-section .form-inline input {
+  -webkit-box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+  padding: 1.25rem 2rem;
+  height: auto;
+  font-family: 'Varela Round';
+  font-size: 80%;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  border: 0;
+}
+
+.contact-section {
+  padding: 5rem 0 0;
+}
+
+.contact-section .card {
+  border: 0;
+  border-bottom: 0.25rem solid #781c2e;
+}
+
+.contact-section .card h4 {
+  font-size: 0.8rem;
+  font-family: 'Varela Round';
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+}
+
+.contact-section .card hr {
+  border-color: #781c2e;
+  border-width: 0.25rem;
+  width: 3rem;
+}
+
+.contact-section .social {
+  margin-top: 5rem;
+}
+
+.contact-section .social a {
+  text-align: center;
+  height: 3rem;
+  width: 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 100%;
+  line-height: 3rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-section .social a:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-section .social a:active {
+  color: #fff;
+}
+
+body {
+  font-family: 'Nunito';
+  letter-spacing: 0.0625em;
+}
+
+a {
+  color: #781c2e;
+}
+
+a:focus, a:hover {
+  text-decoration: none;
+  color: #3c6360;
+}
+
+.bg-black {
+  background-color: #161616 !important;
+}
+
+.bg-primary {
+  background-color: #781c2e !important;
+}
+
+.text-primary {
+  color: #781c2e !important;
+}
+
+footer {
+  padding: 5rem 0;
+}
+
+.unionicon {
+  margin-bottom: 30px;
+  margin-top: -30px;
+  width: 15%;
+}
+
+.cresticon {
+  margin-bottom: 30px;
+  width: 30%;
+  margin-top: -30px;
+}
+
+
+/* fancy hr */
+
+hr {
+  border: 0;
+  margin: 1.35em auto;
+  max-width: 100%;
+  background-position: 50%;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.accessory {
+  height: 6px;
+  background-image: radial-gradient(closest-side, rgb(244, 234, 234), rgba(128, 128, 128, 0) 100%);
+  position: relative;
+}
+
+hr.hr-4 {
+  padding: 0;
+  border: none;
+  border-top: medium double #8c8c8c;
+  color: #8c8c8c;
+  text-align: center;
+}
+
+hr.hr-4:after {
+  content: "§";
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 0.25em;
+
+}
+
+
+/* Headshots */
+
+figure {
+  margin-top: 30px;
+  position: relative;
+  display: inline-block;
+  border-radius: 100%;
+  width: 180px;
+  height: 180px;
+  transition: all 250ms;
+
+}
+
+.one {
+  position: relative;
+  z-index: 1;
+  height: 160px;
+
+}
+
+.one:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 180px;
+  height: 180px;
+  border-radius: 80rem;
+  background-color: lightgrey;
+  transform: scale(1);
+  transition: all 250ms;
+}
+
+.one img {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  overflow: hidden;
+  width: 180px;
+  border-radius: 8rem;
+}
+.one:hover:before {
+  background-color: #af2a3c;
+  transform: scale(1.1);
+}
+
+
+.headshottext{
+  margin-top: 10px;
+  padding-left: 10px;
+
+}
+
+.headshotgrade{
+  margin-top: -5rem;
+  font-size: 70%;
+}
+</style>
+<body>
+    <body id="page-top">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+          <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="https://www.heritageit.edu/index.aspx">Heritage Institute Of Technology</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+              </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#about"><b>HOME</b></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="admin.php"><b>ADMIN LOGIN</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="teacher.php"><b>TEACHER LOGIN</b></a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="student.php"><b>STUDENT LOGIN</b</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      
+        <!-- Header -->
+        <header class="masthead">
+          <div class="container d-flex h-100 align-items-center">
+            <div class="mx-auto text-center">
+              <h1 class="mx-auto my-0 text-uppercase">Heritage Institute Of Technology</h1>
+              <h3 class="text-white-50 mx-auto mt-2 mb-lg-5">Atmo Deepo Bhavo</h3>
+               <h3 class="text-white-50 mx-auto mt-2 mb-5">Be Your Own Light</h3>
+              <a href="https://www.youtube.com/c/TheHeritageGroupofInstitutions" class="btn btn-primary js-scroll-trigger">About</a>
+            </div>
+
+          </div>
+        </header>
+      
+        <!-- About Section -->
+        <section id="about" class="about-section text-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <h2 class="text-white mb-4">“College was especially sweet because of the positive, hopeful atmosphere of a college campus.”</h2>
+                <hr class="accessory">
+                <p class="text-white-50">“A University is just a group of buildings gathered around a library.College life is that part of your life that you are going to relive in your memories till you breathe.” </p>
+                
+      
+                <p class="text-white-50">Your college friends kinda become family, you eat together, you take naps, fight, laugh, cry, and do absolutely nothing together until you can’t remember how you ever lived your life without them!!! </p>
+      
+                <h3 class="text-white mb-4">Meet Your Professors</h3>
+      
+                <hr class="accessory" width="50%">
+                <br>
+      
+              </div>
+            </div>
+      
+            <!-- Headshots -->
+            <div class="container-fluid">
+      
+              <!-- Row 1 -->
+              <div class="row headshots">
+      
+      
+                <div class="col-sm-3">
+      
+                  <figure class="one">
+                    <img src='https://i.postimg.cc/CxCTbWz8/maleheadshot.jpg' class="headshotphoto" />
+                    <p class="text-white headshottext">Dr.Souvik Basu</p>
+                    <p class="text-white headshotgrade"> <b>Position</b>:  HOD</p>
+                    <p class="text-white headshotgrade"> <b>Year</b>: 16 Years</p>
+                    <p class="text-white headshotgrade"> <b>Major</b>: Ph.D. (IIEST, Shibpur), M.Tech (WBUT), MCA (BU), B.Sc. Statistics (CU)</p>
+                  </figure>
+      
+                </div>
+      
+      
+                <div class="col-sm-3">
+      
+                  <figure class="one">
+                    <img src='https://i.postimg.cc/CxCTbWz8/maleheadshot.jpg' class="headshotphoto" />
+                    <p class="text-white headshottext">Prof. Sandipan Ganguly</p>
+                    <p class="text-white headshotgrade"> <b>Position</b>: Assistant Professor,DC</p>
+                    <p class="text-white headshotgrade"> <b>Year</b>: 12 Years </p>
+                    <p class="text-white headshotgrade"> <b>Major</b>: M.Tech, MCA (WBUT), B.Sc(CU) </p>
+      
+                  </figure>
+      
+                </div>
+                <div class="col-sm-3">
+      
+                  <figure class="one">
+                    <img src='https://i.postimg.cc/CxCTbWz8/maleheadshot.jpg' alt="" />
+                    <p class="text-white headshottext">Prof. Sumon Ghosh</p>
+                    <p class="text-white headshotgrade"> <b>Position</b>: Assistant Professor</p>
+                    <p class="text-white headshotgrade"> <b>Year</b>: 6 Years</p>
+                    <p class="text-white headshotgrade"> <b>Major</b>: MCA(WBUT), BCA(WBUT)</p>
+                  </figure>
+      
+                </div>
+                <div class="col-sm-3">
+      
+                  <figure class="one">
+                    <img src='https://i.postimg.cc/CxCTbWz8/maleheadshot.jpg' alt="" />
+                    <p class="text-white headshottext">Prof. Anirban Kundu</p>
+                    <p class="text-white headshotgrade"> <b>Position</b>: Assistant Professor</p>
+                    <p class="text-white headshotgrade"> <b>Year</b>: 13 Years</p>
+                    <p class="text-white headshotgrade"> <b>Major</b>: MCA (VU), B.Sc(CU)</p>
+      
+                  </figure>
+      
+                </div>
+      
+              </div>
+      
+              <!-- Row 2 -->
+              <div class="row">
+      
+             
+    
+      
+               
+      
+              </div>
+      
+              <!-- Row 3 -->
+              <div class="row">
+      
+                <div class="col-sm-3">
+      
+                  <figure class="one">
+                    <img src='https://i.postimg.cc/CxCTbWz8/maleheadshot.jpg' alt="" />
+                    <p class="text-white headshottext">Prof. Subhajit Rakshit</p>
+                    <p class="text-white headshotgrade"> <b>Position</b>: Assistant Professor</p>
+                    <p class="text-white headshotgrade"> <b>Year</b>: 12 Years</p>
+                    <p class="text-white headshotgrade"> <b>Major</b>: M.Tech (WBUT), MCA (WBUT), B.Sc(CU)</p>
+                  </figure>
+      
+                </div>
+      
+      
+                <div class="col-sm-3">
+      
+                  <figure class="one">
+                    <img src='https://i.postimg.cc/CxCTbWz8/maleheadshot.jpg' alt="" />
+                    <p class="text-white headshottext">Prof. Palash Ghosh</p>
+                    <p class="text-white headshotgrade"> <b>Position</b>: Assistant Professor</p>
+                    <p class="text-white headshotgrade"> <b>Year</b>: 16 Years</p>
+                    <p class="text-white headshotgrade"> <b>Major</b>: MCA(JU), B.Sc(JU) </p>
+      
+                  </figure>
+      
+                </div>
+                <div class="col-sm-3">
+                <figure class="one">
+                  <img src='https://i.postimg.cc/CxCTbWz8/maleheadshot.jpg' alt="" />
+                  <p class="text-white headshottext">Prof. Debabrata Kar</p>
+                  <p class="text-white headshotgrade"> <b>Position</b>:Assistant Professor</p>
+                  <p class="text-white headshotgrade"> <b>Year</b>: 15 Years</p>
+                  <p class="text-white headshotgrade"> <b>Major</b>: MCA (VTU), MBA(NOU), B.Sc(Utkal Univ.)</p>
+                </figure>
+    
+              </div>
+              <div class="col-sm-3">
+      
+                <figure class="one">
+                  <img src='https://i.postimg.cc/CxCTbWz8/maleheadshot.jpg' alt="" />
+                  <p class="text-white headshottext">Mr. Indranil Dasgupta</p>
+                  <p class="text-white headshotgrade"> <b>Position</b>: Technical Assistant</p>
+                  <p class="text-white headshotgrade"> <b>Major</b>: 	MCA, B.COM, O-LEVEL</p>
+                </figure>
+    
+              </div>
+    
+      
+              </div>
+      
+              <!-- Row 4 -->
+              <div class="row">
+      
+                
+      
+              
+      
+             
+              
+      
+              </div>
+      
+            </div> <br><br>
+      
+          </div>
+          <!-- Container div -->
+      
+        </section>
+      
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+          <div class="container">
+      
+            <!-- Featured Project Row -->
+            <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+              <div class="col-xl-8 col-lg-7">
+                <img class="img-fluid mb-3 mb-lg-0" src="http://management.ind.in/wp-content/uploads/2010/09/Heritage-Institute-of-Technology-LOGO.png" alt="">
+      
+              </div>
+              <div class="col-xl-4 col-lg-5">
+                <div class="featured-text text-center text-lg-left">
+                  <h4>Facilitating Alumni & Student Interaction</h4>
+                  <p class="text-black-50 mb-0">Heritage Institute of Technology, popularly known as HITK or HIT is a self-financing institute in the state of the West Bengal. Heritage Institute of Technology is ranked the best amongst engineering colleges of West Bengal. The campus is situated in the southern fringes of Kolkata. It is affiliated to Maulana Abul Kalam Azad University of Technology, Kolkata. In 2022, HIT was given a rank of 201-250 in the NIRF 2022 Engineering rankings making it amongst the Top 250 Engineering schools of the country.
+                    .</p>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Project One Row -->
+            <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+              <div class="col-lg-6">
+                <img class="img-fluid" src="https://static.zollege.in/public/college_data/images/appImage/1647340937HeritageInstituteofTechnologyKolkata17.jpg?tr=h-250,w-400,c-force" alt="">
+      
+              </div>
+              <div class="col-lg-6">
+                <div class="bg-black text-center h-100 project">
+                  <div class="d-flex h-100">
+                    <div class="project-text w-100 my-auto text-center text-lg-left">
+                      <h4 class="text-white">Fundraising</h4>
+                      <p class="mb-0 text-white-50">Heritage Institute of Technology was set up on the eastern fringes of Kolkata in 2001 by a group of industrialists hailing from the flourishing information technology, electronics and related industries around Kolkata, and some public figures. The foundation behind the growth of HITK is the Kalyan Bharti Trust. To meet the demand for technical manpower and in view of fiscal constraints at the governmental level, the Kalyan Bharti Trust supplemented the state government's efforts in setting up new engineering colleges by establishing the Heritage Institute of Technology in September 2000.!!</p>
+                      <hr class="d-none d-lg-block mb-0 ml-0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Project Two Row -->
+            <div class="row justify-content-center no-gutters">
+              <div class="col-lg-6">
+                <img class="img-fluid" src="https://static.collegedekho.com/media/img/institute/crawled_images/Heritage_Institute_of_Technology1.jpg" alt="">
+              </div>
+              <div class="col-lg-6 order-lg-first">
+                <div class="bg-black text-center h-100 project">
+                  <div class="d-flex h-100">
+                    <div class="project-text w-100 my-auto text-center text-lg-right">
+                      <h4 class="text-white">Courses</h4>
+                      <p class="mb-0 text-white-50">The institute offers one undergraduate course (B. Tech.) and three graduate courses (M. Tech., MBA and MCA). All courses are approved by the All India Council for Technical Education AICTE, Government of India and the Department of Higher Education, Government of West Bengal. Since its inception, it has been affiliated to the West Bengal University of Technology, Kolkata. </p>
+                      <hr class="d-none d-lg-block mb-0 mr-0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </section>
+      
+        <!-- Signup Section -->
+        <section id="signup" class="signup-section">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 col-lg-8 mx-auto text-center">
+      
+                <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+                <h2 class="text-white mb-5">Heritage Institute Of Technology</h2>
+      
+              </div>
+            </div>
+          </div>
+        </section>
+      
+        <!-- Contact Section -->
+        <section class="contact-section bg-black">
+          <div class="container">
+      
+            <div class="row">
+      
+              <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                  <div class="card-body text-center">
+                    <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                    <h4 class="text-uppercase m-0">Address</h4>
+                    <hr class="my-4">
+                    <div class="small text-black-50">Chowbaga Road, Anandapur PO:East Kolkata Township, Kolkata 700 107</div>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                  <div class="card-body text-center">
+                    <i class="fas fa-envelope text-primary mb-2"></i>
+                    <h4 class="text-uppercase m-0">Email</h4>
+                    <hr class="my-4">
+                    <div class="small text-black-50">
+                      <a href="#">admin@heritageit.edu</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                  <div class="card-body text-center">
+                    <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                    <h4 class="text-uppercase m-0">Phone</h4>
+                    <hr class="my-4">
+                    <div class="small text-black-50">Ph: +91 33 6627 0600 / 0609 / 0614 / 0622</div>
+                      <div class="small text-black-50">Fax: +91 33 2443 0455 / 1794</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            <div class="social d-flex justify-content-center">
+              <a href="https://www.facebook.com/Heritageit" class="mx-2">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              <a href="https://twitter.com/heritageitkol" class="mx-2">
+                  <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+      
+          </div>
+        </section>
+      
+        <!-- Footer -->
+        <footer class="bg-black small text-center text-white-50">
+          <div class="container">
+            Sounak Pal-2182007,
+            Subhasish Bagchi-2182008,
+            Basudeb Basak-2182058,
+            Labani Mukherjee-2182012
+          </div>
+        </footer>
+      
+      </body>
+      
+      </html>
+    
